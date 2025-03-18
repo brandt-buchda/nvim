@@ -11,15 +11,35 @@ return {
                 view = {
                     width = 30,
                     side = "left",
+                    signcolumn = "no",
                     -- optionally, you can adjust the height or other view settings here
                 },
                 filters = {
                     dotfiles = false, -- set to true to hide dotfiles
                 },
+                git = {
+                    enable = false,
+                },
+                renderer = {
+                    indent_markers = {
+                        enable = true,
+                    },
+                    icons = {
+                        glyphs = {
+                            default = "",
+                        },
+                        web_devicons = {
+                            file = {
+                                enable = false,
+                            },
+                        },
+                    },
+                },
             })
 
             -- Optional: Key mapping to toggle the tree
             vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+            -- vim.cmd([[]])
         end,
     },
 }
