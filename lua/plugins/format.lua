@@ -21,6 +21,22 @@ return {
                             }
                         end,
                     },
+                    python = {
+                        function()
+                            return {
+                                exe = "black",
+                                args = { "--quiet", "--config", vim.fn.getcwd() .. "/pyproject.toml", "-" },
+                                stdin = true,
+                            }
+                        end,
+                        function()
+                            return {
+                                exe = "isort",
+                                args = { "--quiet", "-" },
+                                stdin = true,
+                            }
+                        end,
+                    },
                 },
             })
 
@@ -28,7 +44,7 @@ return {
             vim.api.nvim_create_augroup("FormatAutogroup", { clear = true })
             vim.api.nvim_create_autocmd("BufWritePost", {
                 group = "FormatAutogroup",
-                pattern = { "*.lua" },
+                pattern = { "*.lua", "*.py" },
                 command = "FormatWrite",
             })
         end,

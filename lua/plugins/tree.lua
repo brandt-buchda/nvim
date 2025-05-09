@@ -16,6 +16,7 @@ return {
                 },
                 filters = {
                     dotfiles = false, -- set to true to hide dotfiles
+                    custom = { "__pycache__", ".git" },
                 },
                 git = {
                     enable = false,

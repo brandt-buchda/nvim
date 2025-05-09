@@ -4,7 +4,13 @@ return {
     { import = "plugins.telescope" },
     { import = "plugins.fugitive" },
     { import = "plugins.lsp" },
+    { import = "plugins.database" },
+    { import = "plugins.flutter" },
+    { import = "plugins.pairs" },
+    { import = "plugins.undo" },
     { import = "plugins.format" },
+    { import = "plugins.comments" },
     { import = "plugins.terminal" },
     { import = "plugins.style" },
+    { import = "plugins.session" },
 }

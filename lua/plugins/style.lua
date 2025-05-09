@@ -25,6 +25,9 @@ return {
                 show_end_of_buffer = false,
             })
             vim.cmd("colorscheme catppuccin")
+
+            local catppuccin = require("catppuccin.palettes").get_palette()
+            vim.api.nvim_set_hl(0, "ColorColumn", { bg = catppuccin.mantle })
         end,
     },
     {
