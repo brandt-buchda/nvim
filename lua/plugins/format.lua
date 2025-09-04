@@ -23,9 +23,11 @@ return {
                     },
                     python = {
                         function()
+                            local filename = vim.api.nvim_buf_get_name(0)
+                            local root = require("lspconfig.util").root_pattern("pyproject.toml")(filename)
                             return {
                                 exe = "black",
-                                args = { "--quiet", "--config", vim.fn.getcwd() .. "/pyproject.toml", "-" },
+                                args = { "--quiet", "--config", root .. "/pyproject.toml", "-" },
                                 stdin = true,
                             }
                         end,

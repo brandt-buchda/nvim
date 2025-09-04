@@ -5,7 +5,7 @@ return {
         config = function()
             require("nvim-treesitter.configs").setup({
                 -- Specify the parsers you want to install. You can add or remove languages.
-                ensure_installed = { "bash", "lua", "python", "javascript", "html", "css" },
+                ensure_installed = { "bash", "lua", "python", "javascript", "html", "css", "markdown", "markdown_inline" },
                 sync_install = false, -- Install languages asynchronously
 
                 highlight = {

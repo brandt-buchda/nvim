@@ -14,7 +14,7 @@ local on_attach = function(client, bufnr)
     -- Hover to show documentation
     buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
     -- Open diagnostice info
-    buf_set_keymap("n", "L", "<cmd>lua vim.diagnostic.open_float()<CR>")
+    buf_set_keymap("n", "<leader>I", "<cmd>lua vim.diagnostic.open_float()<CR>")
     -- List references
     buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
     -- Go to implementation
@@ -28,6 +28,11 @@ local on_attach = function(client, bufnr)
 end
 
 return {
+
+    {
+        "jonstoler/lua-toml",
+        lazy = false, -- load immediately, so require("toml") isn’t missing
+    },
     -- Mason: Installer for LSP servers, debuggers, etc.
     {
         "williamboman/mason.nvim",
@@ -52,7 +57,7 @@ return {
         config = function()
             require("mason-lspconfig").setup({
                 -- Automatically install language servers listed here
-                ensure_installed = { "lua_ls", "basedpyright", "sqls" },
+                ensure_installed = { "lua_ls", "basedpyright", "sqls", "marksman" },
                 automatic_installation = true,
             })
         end,
@@ -61,6 +66,7 @@ return {
     -- nvim-lspconfig: Configurations for built-in LSP client
     {
         "neovim/nvim-lspconfig",
+        dependencies = { "jonstoler/lua-toml" },
         config = function()
             local lspconfig = require("lspconfig")
 
@@ -80,6 +86,7 @@ return {
             -- For example, if you want to set up Pyright for Python:
             lspconfig.basedpyright.setup({
                 on_attach = on_attach,
+                root_dir = require("lspconfig.util").root_pattern("pyproject.toml"),
                 settings = {
                     python = {
                         analysis = {

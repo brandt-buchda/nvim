@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 -- Initialize NVIM Configuration --
 require("config")
 
