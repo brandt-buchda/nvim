@@ -56,8 +56,8 @@ return {
         dependencies = { "williamboman/mason.nvim" },
         config = function()
             require("mason-lspconfig").setup({
-                -- Automatically install language servers listed here
-                ensure_installed = { "lua_ls", "basedpyright", "sqls", "marksman" },
+                -- gdscript LSP runs in Godot editor, not installed via Mason
+                ensure_installed = { "lua_ls", "basedpyright" },
                 automatic_installation = true,
             })
         end,
@@ -135,6 +135,17 @@ return {
                         end
                     end
                 end,
+            })
+
+            -- Godot GDScript LSP setup (connects to running Godot editor)
+            require("lspconfig").gdscript.setup({
+                on_attach = on_attach,
+                -- Force TCP connection (works better on Windows)
+                force_setup = true, -- Run setup even if not installed via Mason
+                single_file_support = false,
+                root_dir = require("lspconfig.util").root_pattern("project.godot"),
+                filetypes = { "gd", "gdscript", "gdscript3" },
+                settings = {},
             })
 
             require("lspconfig").dartls.setup({

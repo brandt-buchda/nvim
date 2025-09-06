@@ -13,4 +13,5 @@ return {
     { import = "plugins.terminal" },
     { import = "plugins.style" },
     { import = "plugins.session" },
+    { import = "plugins.godot" }
 }

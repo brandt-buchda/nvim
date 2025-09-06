@@ -13,8 +13,29 @@ return {
                         "%.png$", -- always ignore *.png
                         "%.jpeg$", -- always ignore *.jpeg
                         "%.jpg$", -- always ignore *.jpg
-                        "^data/.*", -- ignore any “data/…” at the very start
-                        "/data/.*", -- ignore any “/data/…” deeper in the path
+                        "^data/.*", 
+                        "/data/.*",
+                        -- Additional patterns:
+                        "node_modules/",
+                        "addon/",
+                        "%.zip$",
+                        "%.rar$",
+                        "%.7z$",
+                        "%.exe$",
+                        "%.dll$",
+                        "%.so$",
+                        "%.log$",
+                        "%.tmp$",
+                        "%.temp$",
+                        "%.cache$",
+                        "%.bin$",
+                        "%.obj$",
+                        "%.o$",
+                        "build/",
+                        "dist/",
+                        "target/",
+                        "%.import$",  -- Godot import files
+                        "%.uid$",     -- Godot uid files
                     },
                 },
             })
